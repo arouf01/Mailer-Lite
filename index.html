@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mailer Lite Subscription Form</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="form-container">
+        <!-- Section 1: API Key -->
+        <div id="section1" class="form-section active">
+            <h2>Enter API Key</h2>
+            <input type="text" id="apiKey" placeholder="API Key">
+            <button id="nextBtn" onclick="nextSection()" disabled>Next</button>
+            <p id="showStatus"></p>
+        </div>
+
+        <!-- Section 2: Subscription Form -->
+        <div id="section2" class="form-section">
+            <h2>Subscribe Now</h2>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="firstName" placeholder="First Name">
+            <input type="text" id="lastName" placeholder="Last Name">
+            <button onclick="subscribe()">Subscribe Now</button>
+            <br>
+            <button onclick="logOut()">Log Out</button>
+            <p id="successOrError"></p>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="test.js"></script>
+</body>
+
+</html>
