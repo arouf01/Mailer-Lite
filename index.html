@@ -15,7 +15,7 @@
         <div id="section1" class="form-section active">
             <h2>Enter API Key</h2>
             <input type="text" id="apiKey" placeholder="API Key">
-            <button id="nextBtn" onclick="nextSection()" disabled>Next</button>
+            <button id="nextBtn" onclick="nextSection(); nextBtn()" disabled>Next</button>
             <p id="showStatus"></p>
         </div>
 
@@ -25,6 +25,14 @@
             <input type="email" id="email" placeholder="Email" required>
             <input type="text" id="firstName" placeholder="First Name">
             <input type="text" id="lastName" placeholder="Last Name">
+
+            <label id='groups' for="SelectGroup">Select a Group:</label>
+
+            <select id="dropdown" name="Groups" id="groups">
+                <option>Select Group</option>
+            </select>
+
+
             <button onclick="subscribe()">Subscribe Now</button>
             <button onclick="logOut()">Log Out</button>
             <p id="successOrError"></p>

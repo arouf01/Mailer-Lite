@@ -11,13 +11,10 @@ document.getElementById('apiKey').addEventListener('keyup', async function (e) {
 
 });
 
-
 // Check If the API is Correct
-const baseUrl = 'https://connect.mailerlite.com/api/subscribers';
-
 async function checkAPIKey(APIKey) {
     try {
-        const response = await fetch(baseUrl, {
+        const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,7 +22,6 @@ async function checkAPIKey(APIKey) {
                 'Authorization': `Bearer ${APIKey}`
             }
         });
-        //const data = await response.json();
         //console.log(response.status)
         if (response.status === 200) {
             document.getElementById('showStatus').innerText = 'Connected';
@@ -33,6 +29,7 @@ async function checkAPIKey(APIKey) {
 
             // Storing API Key to Local DataBase
             localStorage.setItem('api-key', APIKey);
+
         }
         else {
             document.getElementById('nextBtn').addAttribute('disabled');
@@ -40,8 +37,45 @@ async function checkAPIKey(APIKey) {
         }
     }
     catch (error) {
-        console.error('Invalid API Key');
+        console.log('Checking API Failed', error);
     }
+
+}
+
+// Calling Function to Fetch Group Form MailerLite
+function nextBtn() {
+    fetchGroup();
+}
+
+// Fetching All Groups From MailerLite and Add It To The From 
+async function fetchGroup() {
+
+    // Getting API key From Field or From DataBase
+    const APIKey = document.getElementById('apiKey').value || localStorage.getItem('api-key');
+    try {
+        let getAllGroups = await fetch('https://connect.mailerlite.com/api/groups', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${APIKey}`
+            }
+        });
+        const response = await getAllGroups.json()
+        const getGroups = response.data;
+        let getGroupFromHTML = document.getElementById("dropdown");
+
+        for (let i = 0; i < getGroups.length; i++) {
+            let groupName = getGroups[i].name;
+            let groupID = getGroups[i].id;
+            let createElementOptions = `<option id = "${groupName}" value="${groupID}">${groupName}</option>`
+            getGroupFromHTML.innerHTML += createElementOptions;
+        }
+    }
+    catch (error) {
+        console.log('Group Fetched Failed', error);
+    }
+
 }
 
 
@@ -49,12 +83,13 @@ async function checkAPIKey(APIKey) {
 async function subscribe() {
 
     // Getting API key From Field or From DataBase
-    let APIKey = document.getElementById('apiKey').value || localStorage.getItem('api-key');
+    const APIKey = document.getElementById('apiKey').value || localStorage.getItem('api-key')
 
     // Getting Value From Form's Fields
     const email = document.getElementById("email").value;
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
+    const groupID = document.getElementById("dropdown").value;
 
     // Mapping Data
     let data = {
@@ -62,11 +97,13 @@ async function subscribe() {
         fields: {
             name: firstName,
             last_name: lastName
-        }
+        },
+        groups: [groupID]
     }
 
+    // Trying To Subscribe In MailerLite
     try {
-        const response = await fetch(baseUrl, {
+        const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,28 +131,39 @@ async function subscribe() {
         }
 
     }
+
+    // Catching
     catch (error) {
-        console.log('Subscribe Failed');
+        console.log('Subscribe Failed', error);
     }
+
 }
 
+// Function For Clearing The Form
 function clearForm() {
     document.getElementById("email").value = '';
     document.getElementById("firstName").value = '';
     document.getElementById("lastName").value = '';
     document.getElementById('successOrError').innerText = '';
+    document.getElementById("dropdown").value = 'Select Group'
 }
 
 
+// Checkiing If API Key In Local Storage
 window.onload = () => {
     let getAPIKeyFromLocalStroge = localStorage.getItem('api-key');
 
     if (getAPIKeyFromLocalStroge !== null) {
-        nextSection()
+        if (!document.getElementById("section2").classList.contains("active")) {
+            nextSection();
+            fetchGroup();
+        }
     }
 };
 
+// Logout Function and Clear Local Storage
 function logOut() {
     localStorage.clear();
     location.reload();
 }
+

@@ -10,24 +10,52 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #6b9bff, #9d6bff);
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
     color: #333;
+
+}
+
+@keyframes gradient-animation {
+    0% {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+
+    50% {
+        background: linear-gradient(135deg, #fc6767, #ec008c);
+    }
+
+    100% {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
 }
 
 .form-container {
     width: 100%;
     max-width: 400px;
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .form-section {
     display: none;
     opacity: 0;
-    transition: opacity 0.5s, transform 0.5s;
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .form-section.active {
@@ -39,37 +67,65 @@ body {
 h2 {
     margin-bottom: 15px;
     font-size: 24px;
-    color: #4a4a4a;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+select {
     width: 100%;
-    padding: 10px;
-    margin: 8px 0;
+    padding: 12px;
+    margin: 10px 0;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
     color: #333;
+    background: rgba(240, 240, 240, 0.8);
+    transition: box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.4);
 }
 
 button {
     width: 100%;
-    padding: 10px;
-    background: #6b9bff;
+    padding: 12px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     color: white;
     font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 10px;
+    transition: transform 0.3s, background 0.3s;
+    margin-top: 15px;
 }
 
 button:hover {
-    background: #567ce7;
+    background: linear-gradient(135deg, #6a11cb, #fc6767);
+    transform: translateY(-2px);
 }
 
 button:active {
-    background: #4361b3;
+    transform: scale(0.98);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+#showStatus,
+#successOrError {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    color: #e6005c;
+    font-weight: bold;
 }
