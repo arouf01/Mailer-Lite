@@ -4,8 +4,8 @@ function nextSection() {
 }
 
 // Get API Key and Check If connection is Okay
-document.getElementById('apiKey').addEventListener('keyup', async function (e) {
-    const APIKey = e.target.value;
+document.getElementById('apiKey').addEventListener('keyup', async function (event) {
+    const APIKey = event.target.value;
     //console.log(APIKey);
     checkAPIKey(APIKey);
 
