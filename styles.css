@@ -80,10 +80,10 @@ h2 {
     font-size: 14px;
     font-weight: bold;
     text-align: center;
-    background-color: #f0f0f0; 
+    background-color: #f0f0f0;
     color: #555;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
     min-height: 40px;
 }
 
@@ -106,10 +106,12 @@ select:focus {
     outline: none;
     box-shadow: 0 0 8px rgba(106, 17, 203, 0.4);
 }
-.buttonStyle{
+
+.buttonStyle {
     display: flex;
     margin-top: 20px;
 }
+
 button {
     width: 100%;
     padding: 12px;
@@ -139,6 +141,10 @@ button:disabled {
     cursor: not-allowed;
 }
 
+#logout {
+    background: linear-gradient(135deg, #e71321, #fc2542) !important;
+}
+
 #showStatus,
 #successOrError {
     text-align: center;
@@ -148,16 +154,16 @@ button:disabled {
     font-weight: bold;
 }
 
-#groupAndRefresh{
+#groupAndRefresh {
     display: flex;
-    
+
 }
 
-#refreshbtn{
+#refreshbtn {
     width: 30%;
     height: 70%;
     margin-left: 15px;
     margin-top: 3% !important;
     border-radius: 50px;
-    
+
 }
