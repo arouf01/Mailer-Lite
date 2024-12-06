@@ -1,55 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MailerLite Subscribe Form</title>
-    <link rel="shortcut icon" href="images/mailerlite-icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
+    <link
+      rel="shortcut icon"
+      href="images/mailerlite-icon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-</head>
+  <body>
 
-<body>
     <div class="form-container">
-        <!-- Section 1: API Key -->
-        <div id="section1" class="form-section active">
-            <h2>Enter MailerLite API Key</h2>
-            <input type="text" id="apiKey" placeholder="API Key">
-            <button id="nextBtn" onclick="nextBtn()">Next</button>
-            <p id="connected">Not Connected</p>
+
+      <!-- Section 1: API Key -->
+      <div id="enterAPIKeySection" class="form-section active">
+        <h2>Enter MailerLite API Key</h2>
+        <input type="text" id="apiKey" placeholder="API Key" />
+        <button id="nextBtn" onclick="getGroups()">Next</button>
+        <p id="connected">Not Connected</p>
+      </div>
+
+      <!--Choose Task Section-->
+      <div id="chooseTaskSection" class="form-section">
+        <h3>Choose a Task</h3>
+        <select id="taskLists" name="taskLists">
+          <option id="selectATask" value="selectATask">Select a Task</option>
+          <option id="createGroup" value="createGroup">Create a Group</option>
+          <option id="newSubscriber" value="newSubscriber">
+            Create a New Subscriber
+          </option>
+        </select>
+        <div class="buttonStyle">
+          <button id="logout" onclick="logOut()">Log Out</button>
         </div>
+      </div>
 
-        <!-- Section 2: Subscription Form -->
-        <div id="section2" class="form-section">
-            <h2>Subscribe Now</h2>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="text" id="firstName" placeholder="First Name">
-            <input type="text" id="lastName" placeholder="Last Name">
-
-            <label id='groups' for="SelectGroup">Select a Group:</label>
-
-            <div id="groupAndRefresh">
-                <select id="dropdown" name="Groups">
-                    <option>Select Group</option>
-                </select>
-                <button onclick="refreshGroups()" id="refreshbtn">Refresh</button>
-            </div>
-
-
-            <div class="buttonStyle">
-                <button id="subscribe" onclick="subscribe()">Subscribe Now</button>
+            <!-- Section 3: Create Group Section -->
+        <div id="createGroupSection" class="form-section">
+              <h2>Create a Group</h2>
+              <input type="text" id="groupName" placeholder="Enter Group Name"/>
+              <div class="buttonStyle">
+                <button id="createGroupButton" onclick="createGroup()">Create Group</button>
                 <button id="logout" onclick="logOut()">Log Out</button>
-            </div>
-            <p id="successOrError"></p>
+              </div>
+              <p id="createGroupStatus"></p>
+          </div>  
+
+      <!-- Section 2: Subscription Form -->
+      <div id="subscribeSection" class="form-section">
+        <h2>Subscribe Now</h2>
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="text" id="firstName" placeholder="First Name" />
+        <input type="text" id="lastName" placeholder="Last Name" />
+
+        <label id="groups" for="SelectGroup">Select a Group:</label>
+
+        <div id="groupAndRefresh">
+          <select id="dropdown" name="Groups">
+            <option>Select Group</option>
+          </select>
+          <button onclick="refreshGroups()" id="reFreshGroups">Refresh</button>
         </div>
+
+        <div class="buttonStyle">
+          <button id="subscribe" onclick="subscribe()">Subscribe Now</button>
+          <button id="logout" onclick="logOut()">Log Out</button>
+        </div>
+        <p id="subscriberStatus"></p>
+      </div> 
+      </div>
+
     </div>
 
+    <script src="./scripts/onLoad.js"></script>
     <script src="./scripts/getGroups.js"></script>
     <script src="./scripts/subscribe.js"></script>
     <script src="./scripts/logoutClear.js"></script>
     <script src="./scripts/fetchFunction.js"></script>
-
-</body>
-
+    <script src="./scripts/createGroup.js"></script>
+    <script src="./scripts/chooseTask.js"></script>
+    <script src="./scripts/postFunction.js"></script>
+  </body>
 </html>
