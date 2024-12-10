@@ -4,9 +4,8 @@ async function subscribe() {
 
   // Getting Value From Form's Fields
   const email = document.getElementById("email").value;
-  const firstName = document.getElementById("firstName").value;
-  const lastName = document.getElementById("lastName").value;
   let groupID = document.getElementById("dropdown").value;
+  let fields = fieldMapping();
 
   // If there is No Group Selected
   groupID = groupID === "Select Group" ? [] : [groupID];
@@ -16,10 +15,7 @@ async function subscribe() {
   if (email) {
     data = {
       email: email,
-      fields: {
-        name: firstName,
-        last_name: lastName,
-      },
+      fields: fields,
       groups: groupID,
     };
   } else {

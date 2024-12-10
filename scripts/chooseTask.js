@@ -1,3 +1,5 @@
+let isFetchedFields = true;
+
 // Function For Calling Next Section After Enter API Keys
 function taskSection() {
   document.getElementById("enterAPIKeySection").classList.remove("active");
@@ -18,6 +20,10 @@ document
       document.getElementById("logout").classList.add("hide");
       document.getElementById("createGroupSection").classList.remove("active");
       document.getElementById("subscribeSection").classList.add("active");
+      if (isFetchedFields) {
+        fetchFields();
+        isFetchedFields = false;
+      }
     } else {
       document.getElementById("logout").classList.remove("hide");
       document.getElementById("createGroupSection").classList.remove("active");

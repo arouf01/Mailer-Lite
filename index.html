@@ -53,10 +53,12 @@
       <!-- Section 2: Subscription Form -->
       <div id="subscribeSection" class="form-section">
         <h2>Subscribe Now</h2>
-        <input type="email" id="email" placeholder="Email" required />
-        <input type="text" id="firstName" placeholder="First Name" />
-        <input type="text" id="lastName" placeholder="Last Name" />
-
+        <div id="allFields">
+          <form id="form" action="">
+            <input type="email" id="email" placeholder="Email"/>
+          </form>
+          <button id="refreshFields" onclick="fetchFields()">Refresh</button>
+        </div>
         <label id="groups" for="SelectGroup">Select a Group:</label>
 
         <div id="groupAndRefresh">
@@ -84,5 +86,6 @@
     <script src="./scripts/createGroup.js"></script>
     <script src="./scripts/chooseTask.js"></script>
     <script src="./scripts/postFunction.js"></script>
+    <script src="./scripts/fetchMapfields.js"></script>
   </body>
 </html>
