@@ -15,7 +15,7 @@ async function fetchFields() {
   let allFields = fetchFields.data;
   //console.log(allFields);
 
-  let fieldContainer = document.getElementById("form");
+  let getForm = document.getElementById("form");
 
   for (let i = 0; i < allFields.length; i++) {
     let fieldName = allFields[i].name;
@@ -25,7 +25,7 @@ async function fetchFields() {
 
     let fields = `<input type=${fieldType} id=${fieldKey} placeholder="Enter ${fieldName}" />`;
 
-    fieldContainer.innerHTML += fields;
+    getForm.innerHTML += fields;
     //console.log(fields);
   }
   document.getElementById("refreshFields").disabled = false;
@@ -38,12 +38,12 @@ function fieldMapping() {
 
   let data = {};
   for (let i = 0; i < elements.length; i++) {
-    let fieldID = elements[i].id;
+    let fieldKey = elements[i].id;
     let fieldValue = elements[i].value;
-    //console.log(fieldID, fieldValue);
+    //console.log(fieldKey, fieldValue);
 
-    if (fieldID !== "email") {
-      data[fieldID] = fieldValue;
+    if (fieldKey !== "email") {
+      data[fieldKey] = fieldValue;
     }
   }
 
