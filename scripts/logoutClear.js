@@ -15,5 +15,5 @@ function logOut() {
 // Reset Inner HTML
 function resetInnerHTML() {
   let element = document.querySelector("form");
-  element.innerHTML = `<input type="email" id="email" placeholder="Email"/>`; // Clears all content inside the element
+  element.innerHTML = `<input type="email" id="email" placeholder="Email"/>`;
 }

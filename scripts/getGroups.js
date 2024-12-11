@@ -9,20 +9,12 @@ async function getGroups() {
   try {
     // MailerLite Get Groups URL
     let url = "https://connect.mailerlite.com/api/groups";
-    // Preparing To Send Information to FetchFunction
-    const options = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${APIKey}`,
-      },
-    };
 
     // Calling The FetchFunction For Get Groups
-    let getAllGroups = await fetchFunction(url, options);
-
+    let getAllGroups = await fetchFunction(url);
+    // Converting to JSON
     let getMailerLiteGroups = await getAllGroups.json();
+    //Getting Data
     let allMailerLiteGroups = getMailerLiteGroups.data;
     //console.log(allMailerLiteGroups)
 

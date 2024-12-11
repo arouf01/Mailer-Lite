@@ -7,18 +7,8 @@ async function fetchFields() {
   document.getElementById("refreshFields").disabled = true;
   resetInnerHTML();
 
-  // Preparing For Getting Fields
-  let options = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: `Bearer ${APIKey}`,
-    },
-  };
-
   // Fetch Fields
-  let response = await fetch(url, options);
+  let response = await fetchFunction(url);
   // Converting to JSON
   let fetchFields = await response.json();
   // Getting Data
