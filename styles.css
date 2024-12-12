@@ -12,6 +12,7 @@ body {
   background: linear-gradient(135deg, #6a11cb, #6a11cb);
   color: #333;
   margin: 0;
+  font-family: cursive;
 }
 
 @keyframes gradient-animation {
@@ -105,6 +106,7 @@ select {
   color: #333;
   background: rgba(240, 240, 240, 0.8);
   transition: box-shadow 0.3s;
+  font-family: cursive;
 }
 
 input:focus,
@@ -113,7 +115,13 @@ select:focus {
   box-shadow: 0 0 8px rgba(106, 17, 203, 0.4);
 }
 
-.buttonStyle {
+label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+.logOutButtonStyle {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -168,6 +176,7 @@ button:disabled {
   margin-top: 10px;
   color: #e6005c;
   font-weight: bold;
+  font-family: cursive;
 }
 
 #groupAndRefresh {
@@ -194,5 +203,29 @@ button:disabled {
 #refreshFields {
   height: 50%;
   width: 50%;
-  margin-top: 2% !important;
+  margin-top: 6% !important;
+}
+#refreshSubsList,
+#deleteSubsLogOut,
+.buttonStyle,
+#deleteGroupLogOut,
+#refreshGroupList {
+  display: flex;
+  padding: 15px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+#refreshSubsListBtn,
+#refreshGroupListBtn {
+  height: 50%;
+  width: 50%;
+  margin-top: 2%;
+  margin-left: 15px;
+  border-radius: 50px;
+}
+#deleteSubs,
+#createGroupButton,
+#subscribe,
+#deleteGroup {
+  margin-right: 15px;
 }

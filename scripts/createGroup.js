@@ -36,5 +36,5 @@ async function createGroup() {
   setTimeout(() => {
     document.getElementById("groupName").value = "";
     document.getElementById("createGroupStatus").innerText = "";
-  }, 2500);
+  }, 1500);
 }

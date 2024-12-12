@@ -13,9 +13,7 @@
   </head>
 
   <body>
-
     <div class="form-container">
-
       <!-- Section 1: API Key -->
       <div id="enterAPIKeySection" class="form-section active">
         <h2>Enter MailerLite API Key</h2>
@@ -30,32 +28,55 @@
         <select id="taskLists" name="taskLists">
           <option id="selectATask" value="selectATask">Select a Task</option>
           <option id="createGroup" value="createGroup">Create a Group</option>
+          <option id="deleteGroup" value="deleteGroup">Delete a Group</option>
           <option id="newSubscriber" value="newSubscriber">
             Create a New Subscriber
           </option>
+          <option id="deleteSubscriber" value="deleteSubscriber">
+            Delete a Subscriber
+          </option>
         </select>
-        <div class="buttonStyle">
+        <div class="logOutButtonStyle">
           <button id="logout" onclick="logOut()">Log Out</button>
         </div>
       </div>
 
-            <!-- Section 3: Create Group Section -->
-        <div id="createGroupSection" class="form-section">
-              <h2>Create a Group</h2>
-              <input type="text" id="groupName" placeholder="Enter Group Name"/>
-              <div class="buttonStyle">
-                <button id="createGroupButton" onclick="createGroup()">Create Group</button>
-                <button id="logout" onclick="logOut()">Log Out</button>
-              </div>
-              <p id="createGroupStatus"></p>
-          </div>  
+      <!-- Create Group Section -->
+      <div id="createGroupSection" class="form-section">
+        <h2>Create a Group</h2>
+        <input type="text" id="groupName" placeholder="Enter Group Name" />
+        <div class="buttonStyle">
+          <button id="createGroupButton" onclick="createGroup()">
+            Create Group
+          </button>
+          <button id="logout" onclick="logOut()">Log Out</button>
+        </div>
+        <p id="createGroupStatus"></p>
+      </div>
 
-      <!-- Section 2: Subscription Form -->
+      <!--Delete a Group -->
+      <div id="deleteGroupSection" class="form-section">
+        <h3>All Groups</h3>
+        <div id="refreshGroupList">
+          <select id="deleteGroupList" name="Group List">
+            <option>Select a Group</option>
+          </select>
+          <button onclick="refreshGroups()" id="refreshGroupListBtn">
+            Refresh
+          </button>
+        </div>
+        <div id="deleteGroupLogOut">
+          <button id="deleteGroup" onclick="deleteGroup()">Delete Group</button>
+          <button id="logout" onclick="logOut()">Log Out</button>
+        </div>
+      </div>
+
+      <!-- Subscription Form -->
       <div id="subscribeSection" class="form-section">
         <h2>Subscribe Now</h2>
         <div id="allFields">
           <form id="form" action="">
-            <input type="email" id="email" placeholder="Email"/>
+            <input type="email" id="email" placeholder="Email" />
           </form>
           <button id="refreshFields" onclick="fetchFields()">Refresh</button>
         </div>
@@ -63,7 +84,7 @@
 
         <div id="groupAndRefresh">
           <select id="dropdown" name="Groups">
-            <option>Select Group</option>
+            <option>Select a Group</option>
           </select>
           <button onclick="refreshGroups()" id="reFreshGroups">Refresh</button>
         </div>
@@ -73,19 +94,36 @@
           <button id="logout" onclick="logOut()">Log Out</button>
         </div>
         <p id="subscriberStatus"></p>
-      </div> 
       </div>
 
+      <!--Delete a Subscriber-->
+      <div id="deleteSubscriberSection" class="form-section">
+        <h3>Subscriber List</h3>
+        <div id="refreshSubsList">
+          <select id="subscriberList" name="Subscriber List">
+            <option>Select a Subscriber</option>
+          </select>
+          <button onclick="refreshSubscriberList()" id="refreshSubsListBtn">
+            Refresh
+          </button>
+        </div>
+        <div id="deleteSubsLogOut">
+          <button id="deleteSubs" onclick="deleteSubscriber()">
+            Delete Subscriber
+          </button>
+          <button id="logout" onclick="logOut()">Log Out</button>
+        </div>
+      </div>
     </div>
 
     <script src="./scripts/onLoad.js"></script>
-    <script src="./scripts/getGroups.js"></script>
+    <script src="./scripts/fetchDeleteGroup.js"></script>
     <script src="./scripts/subscribe.js"></script>
     <script src="./scripts/logoutClear.js"></script>
-    <script src="./scripts/fetchFunction.js"></script>
+    <script src="./scripts/fetchPostFunction.js"></script>
     <script src="./scripts/createGroup.js"></script>
     <script src="./scripts/chooseTask.js"></script>
-    <script src="./scripts/postFunction.js"></script>
     <script src="./scripts/fetchMapfields.js"></script>
+    <script src="./scripts/fetchDeleteSubs.js"></script>
   </body>
 </html>

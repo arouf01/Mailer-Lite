@@ -1,4 +1,4 @@
-// Check If the API is Correct And Getting the Groups
+// Check If the API is Correct And Getting the Groups For Subscriber And For Delete Group
 async function getGroups() {
   document.getElementById("nextBtn").disabled = true;
 
@@ -24,6 +24,8 @@ async function getGroups() {
 
       // Getting Groups and Adding to the Drop-Down
       let groups = document.getElementById("dropdown");
+      // Getting Groups and Adding to the Delete Subscriber Section
+      let deleteSubscriber = document.getElementById("deleteGroupList");
 
       for (let i = 0; i < allMailerLiteGroups.length; i++) {
         let getGroupName = allMailerLiteGroups[i].name;
@@ -33,6 +35,7 @@ async function getGroups() {
         let createElementOptions = `<option value="${getGroupID}">${getGroupName}</option>`;
 
         groups.innerHTML += createElementOptions;
+        deleteSubscriber.innerHTML += createElementOptions;
       }
 
       // Storing API Key to Local DataBase
@@ -48,14 +51,34 @@ async function getGroups() {
     console.log("Please Check Your API Key!");
   }
   document.getElementById("reFreshGroups").disabled = false;
+  document.getElementById("refreshGroupListBtn").disabled = false;
   document.getElementById("nextBtn").disabled = false;
+}
+
+// Delete Group Function
+let deleteGroupUrl = "https://connect.mailerlite.com/api/groups/";
+async function deleteGroup() {
+  let getGroupID = document.getElementById("deleteGroupList").value;
+  // Calling Delete Function
+  let response = await deleteFunction(deleteGroupUrl, getGroupID);
+  if (response.ok) {
+    alert("Group Deleted Successfully.");
+    document.getElementById("deleteGroupList").value = "Select a Group";
+    removeOption(getGroupID);
+  } else {
+    alert("Failed To Delete! / Already Deleted!");
+  }
 }
 
 // Refresh Groups Button
 function refreshGroups() {
   document.getElementById("reFreshGroups").disabled = true;
+  document.getElementById("refreshGroupListBtn").disabled = true;
   document.getElementById(
     "dropdown"
-  ).innerHTML = `<option>Select Group</option>`;
+  ).innerHTML = `<option>Select a Group</option>`;
+  document.getElementById(
+    "deleteGroupList"
+  ).innerHTML = `<option>Select a Group</option>`;
   getGroups();
 }

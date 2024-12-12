@@ -1,6 +1,6 @@
 // Fetch All Fields function
 
-let url = "https://connect.mailerlite.com/api/fields";
+let fieldFetchURL = "https://connect.mailerlite.com/api/fields";
 
 async function fetchFields() {
   // Disabling Button and Resting Fields
@@ -8,7 +8,7 @@ async function fetchFields() {
   resetInnerHTML();
 
   // Fetch Fields
-  let response = await fetchFunction(url);
+  let response = await fetchFunction(fieldFetchURL);
   // Converting to JSON
   let fetchFields = await response.json();
   // Getting Data
@@ -23,7 +23,8 @@ async function fetchFields() {
     let fieldType = allFields[i].type;
     //console.log(fieldName, fieldKey, fieldType);
 
-    let fields = `<input type=${fieldType} id=${fieldKey} placeholder="Enter ${fieldName}" />`;
+    let fields = `<label for=${fieldName}>${fieldName}:</label>
+            <input type=${fieldType} id=${fieldKey} placeholder="Enter ${fieldName}" />`;
 
     getForm.innerHTML += fields;
     //console.log(fields);
