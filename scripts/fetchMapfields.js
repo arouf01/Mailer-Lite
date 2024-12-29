@@ -5,6 +5,7 @@ let fieldFetchURL = "https://connect.mailerlite.com/api/fields";
 async function fetchFields() {
   // Disabling Button and Resting Fields
   document.getElementById("refreshFields").disabled = true;
+  document.getElementById("refreshFieldsBtn").disabled = true;
   resetInnerHTML();
 
   // Fetch Fields
@@ -16,20 +17,28 @@ async function fetchFields() {
   //console.log(allFields);
 
   let getForm = document.getElementById("form");
+  let getDeleteFieldSection = document.getElementById("deleteAField");
 
   for (let i = 0; i < allFields.length; i++) {
     let fieldName = allFields[i].name;
     let fieldKey = allFields[i].key;
     let fieldType = allFields[i].type;
-    //console.log(fieldName, fieldKey, fieldType);
+    let fieldID = allFields[i].id;
+    //console.log(fieldID);
 
+    // For Subscriber Section Field Mapping
     let fields = `<label for=${fieldName}>${fieldName}:</label>
             <input type=${fieldType} id=${fieldKey} placeholder="Enter ${fieldName}" />`;
 
     getForm.innerHTML += fields;
     //console.log(fields);
+
+    // For Delete Field Section
+    let field = `<option value=${fieldID}>${fieldName}</option>`;
+    getDeleteFieldSection.innerHTML += field;
   }
   document.getElementById("refreshFields").disabled = false;
+  document.getElementById("refreshFieldsBtn").disabled = false;
 }
 
 // Fields Mapping Function

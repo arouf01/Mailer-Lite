@@ -17,6 +17,10 @@ function resetInnerHTML() {
   let element = document.querySelector("form");
   element.innerHTML = `<label for="email">Email:</label>
   <input type="email" id="email" placeholder="Email"/>`;
+
+  document.getElementById(
+    "deleteAField"
+  ).innerHTML = `<option value="SelectAField" selected>Select A Field</option>`;
 }
 
 // Remove Option Function From Inner HTML

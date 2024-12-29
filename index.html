@@ -30,7 +30,7 @@
           <option id="createGroup" value="createGroup">Create a Group</option>
           <option id="deleteGroup" value="deleteGroup">Delete a Group</option>
           <option id="newSubscriber" value="newSubscriber">
-            Create a New Subscriber
+            Create a Subscriber
           </option>
           <option id="deleteSubscriber" value="deleteSubscriber">
             Delete a Subscriber
@@ -130,12 +130,27 @@
         <div id="createInputField">
           <input type="text" placeholder="Input Field Name" />
         </div>
-        <button id="createField" onclick="createField()">Create Field</button>
+        <div class="buttonStyle">
+          <button id="createField" onclick="createField()">Create Field</button>
+          <button id="logout" onclick="logOut()">Log Out</button>
+        </div>
       </div>
 
       <!--Delete a Field Section-->
       <div id="deleteFieldSection" class="form-section">
-        <h1>Coming Soon...</h1>
+        <p>Select a Field</p>
+        <div id="deleteFieldFlex">
+          <select name="deleteAField" id="deleteAField">
+            <option value="SelectAField" selected>Select A Field</option>
+            <!--All Field will be Added here-->
+          </select>
+          <button id="refreshFieldsBtn" onclick="fetchFields()">Refresh</button>
+        </div>
+
+        <div class="buttonStyle">
+          <button id="deleteField" onclick="deleteField()">Delete Field</button>
+          <button id="logout" onclick="logOut()">Log Out</button>
+        </div>
       </div>
     </div>
 

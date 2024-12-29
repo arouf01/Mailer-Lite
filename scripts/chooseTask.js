@@ -110,6 +110,12 @@ document
         .classList.remove("active");
       document.getElementById("deleteGroupSection").classList.remove("active");
       document.getElementById("createFieldSection").classList.remove("active");
+
+      // Condition
+      if (!isFieldsFetched) {
+        fetchFields();
+        isFieldsFetched = true;
+      }
     }
 
     // When No Task

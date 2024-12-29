@@ -206,14 +206,16 @@ button:disabled {
 #deleteSubsLogOut,
 .buttonStyle,
 #deleteGroupLogOut,
-#refreshGroupList {
+#refreshGroupList,
+#deleteFieldFlex {
   display: flex;
   padding: 15px;
   margin-bottom: 10px;
   justify-content: space-between;
 }
 #refreshSubsListBtn,
-#refreshGroupListBtn {
+#refreshGroupListBtn,
+#refreshFieldsBtn {
   height: 50%;
   width: 50%;
   margin-top: 2%;
@@ -223,6 +225,8 @@ button:disabled {
 #deleteSubs,
 #createGroupButton,
 #subscribe,
-#deleteGroup {
+#deleteGroup,
+#createField,
+#deleteField {
   margin-right: 15px;
 }
