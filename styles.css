@@ -12,7 +12,6 @@ body {
   background: linear-gradient(135deg, #6a11cb, #6a11cb);
   color: #333;
   margin: 0;
-  font-family: cursive;
 }
 
 @keyframes gradient-animation {
@@ -106,7 +105,6 @@ select {
   color: #333;
   background: rgba(240, 240, 240, 0.8);
   transition: box-shadow 0.3s;
-  font-family: cursive;
 }
 
 input:focus,
@@ -176,7 +174,6 @@ button:disabled {
   margin-top: 10px;
   color: #e6005c;
   font-weight: bold;
-  font-family: cursive;
 }
 
 #groupAndRefresh {

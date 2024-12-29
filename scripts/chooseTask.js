@@ -24,6 +24,8 @@ document
       document
         .getElementById("deleteSubscriberSection")
         .classList.remove("active");
+      document.getElementById("createFieldSection").classList.remove("active");
+      document.getElementById("deleteFieldSection").classList.remove("active");
     }
     // For Delete Group
     else if (getTask == "deleteGroup") {
@@ -36,6 +38,8 @@ document
       document
         .getElementById("deleteSubscriberSection")
         .classList.remove("active");
+      document.getElementById("createFieldSection").classList.remove("active");
+      document.getElementById("deleteFieldSection").classList.remove("active");
     }
 
     // For Create New Subscriber
@@ -49,6 +53,8 @@ document
         .getElementById("deleteSubscriberSection")
         .classList.remove("active");
       document.getElementById("deleteGroupSection").classList.remove("active");
+      document.getElementById("createFieldSection").classList.remove("active");
+      document.getElementById("deleteFieldSection").classList.remove("active");
       // Condition
       if (!isFieldsFetched) {
         fetchFields();
@@ -67,11 +73,43 @@ document
       document.getElementById("createGroupSection").classList.remove("active");
       document.getElementById("subscribeSection").classList.remove("active");
       document.getElementById("deleteGroupSection").classList.remove("active");
+      document.getElementById("createFieldSection").classList.remove("active");
+      document.getElementById("deleteFieldSection").classList.remove("active");
       // Condition
       if (!isSubscriberListFetched) {
         fetchAllSubscriber();
         isSubscriberListFetched = true;
       }
+    }
+
+    // For Create a Field
+    else if (getTask == "createField") {
+      // Active Section
+      document.getElementById("createFieldSection").classList.add("active");
+      // Hidden Section
+      document.getElementById("logout").classList.add("hide");
+      document.getElementById("createGroupSection").classList.remove("active");
+      document.getElementById("subscribeSection").classList.remove("active");
+      document
+        .getElementById("deleteSubscriberSection")
+        .classList.remove("active");
+      document.getElementById("deleteGroupSection").classList.remove("active");
+      document.getElementById("deleteFieldSection").classList.remove("active");
+    }
+
+    // For Delete a Field
+    else if (getTask == "deleteField") {
+      // Active Section
+      document.getElementById("deleteFieldSection").classList.add("active");
+      // Hidden Section
+      document.getElementById("logout").classList.add("hide");
+      document.getElementById("createGroupSection").classList.remove("active");
+      document.getElementById("subscribeSection").classList.remove("active");
+      document
+        .getElementById("deleteSubscriberSection")
+        .classList.remove("active");
+      document.getElementById("deleteGroupSection").classList.remove("active");
+      document.getElementById("createFieldSection").classList.remove("active");
     }
 
     // When No Task

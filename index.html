@@ -35,6 +35,8 @@
           <option id="deleteSubscriber" value="deleteSubscriber">
             Delete a Subscriber
           </option>
+          <option id="createField" value="createField">Create a Field</option>
+          <option id="deleteField" value="deleteField">Delete a Field</option>
         </select>
         <div class="logOutButtonStyle">
           <button id="logout" onclick="logOut()">Log Out</button>
@@ -114,6 +116,27 @@
           <button id="logout" onclick="logOut()">Log Out</button>
         </div>
       </div>
+
+      <!--Create a Field Section-->
+      <div id="createFieldSection" class="form-section">
+        <div>
+          <p>Input Your Field Type</p>
+          <select name="fieldType" id="fieldType">
+            <option value="text">Text</option>
+            <option value="number">Number</option>
+            <option value="date">Date</option>
+          </select>
+        </div>
+        <div id="createInputField">
+          <input type="text" placeholder="Input Field Name" />
+        </div>
+        <button id="createField" onclick="createField()">Create Field</button>
+      </div>
+
+      <!--Delete a Field Section-->
+      <div id="deleteFieldSection" class="form-section">
+        <h1>Coming Soon...</h1>
+      </div>
     </div>
 
     <script src="./scripts/onLoad.js"></script>
@@ -125,5 +148,6 @@
     <script src="./scripts/chooseTask.js"></script>
     <script src="./scripts/fetchMapfields.js"></script>
     <script src="./scripts/fetchDeleteSubs.js"></script>
+    <script src="./scripts/createDeleteFields.js"></script>
   </body>
 </html>

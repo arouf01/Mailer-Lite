@@ -1,5 +1,4 @@
-// Fetch Function
-
+// Get Function
 async function fetchFunction(url) {
   let options = {
     method: "GET",
@@ -30,6 +29,7 @@ async function postFunction(url, data) {
   return response;
 }
 
+// Delete Function
 async function deleteFunction(url, id) {
   let response = await fetch(`${url}${id}`, {
     method: "DELETE",
