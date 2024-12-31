@@ -5,10 +5,11 @@ async function subscribe() {
   // Getting Value From Form's Fields
   const email = document.getElementById("email").value;
   let groupID = document.getElementById("dropdown").value;
+
   let fields = fieldMapping();
 
   // If there is No Group Selected
-  groupID = groupID === "Select Group" ? [] : [groupID];
+  let getGroupID = groupID === "SelectGroup" ? [] : [groupID];
 
   // Mapping and Checking If There Is Any Email
   let data;
@@ -16,7 +17,7 @@ async function subscribe() {
     data = {
       email: email,
       fields: fields,
-      groups: groupID,
+      groups: getGroupID,
     };
   } else {
     alert("The email field is required");

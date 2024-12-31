@@ -1,6 +1,6 @@
 // Function For Clearing The Form
 function clearForm() {
-  document.getElementById("dropdown").value = "Select Group";
+  document.querySelector("#dropdown>option:first-child").selected = true;
   document.getElementById("subscriberStatus").innerText = "";
   let form = document.querySelector("form");
   form.reset();
